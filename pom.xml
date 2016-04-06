@@ -16,7 +16,7 @@
 		<spring-security.version>3.1.4.RELEASE</spring-security.version>
 		<apache-cxf.version>2.7.6</apache-cxf.version>
 		<!-- cxf-2.7.5.jar需要手动下载，然后放到相应位置 -->
-		<cxf.version>2.7.8</cxf.version>
+		<cxf.version>2.7.18</cxf.version>
 		<!-- Hibernate / JPA -->
 		<hibernate.version>4.2.1.Final</hibernate.version>
 		<!-- AOP -->
