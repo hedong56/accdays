@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-2.5.xsd
+      http://www.springframework.org/schema/mvc
+      http://www.springframework.org/schema/mvc/spring-mvc-2.5.xsd
+      http://www.springframework.org/schema/tx
+      http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+      http://www.springframework.org/schema/aop
+      http://www.springframework.org/schema/aop/spring-aop-2.5.xsd ">
+
+	<!-- 注意：每一个实现类都要写一套 -->
+	<bean id="userInfoRmiServiceExporter" class="org.springframework.remoting.rmi.RmiServiceExporter">
+		<!-- 注入实现类 -->
+		<property name="service">
+			<ref bean="userInfoService" /><!-- 实现类bean -->
+		</property>
+		<!-- rmi客户端访问的标识 -->
+		<property name="serviceName">
+			<value>userInfoRmi</value><!-- 客户端拼接在端口号后面/userInfoRmi -->
+		</property>
+		<!-- 找到实现类指定的接口 -->
+		<property name="serviceInterface">
+			<value>com.accdays.rmi.IUserInfoService</value>
+		</property>
+		<!-- 为客户端指定一个请求的端口 -->
+		<property name="registryPort">
+			<value>3999</value>
+		</property>
+	</bean>
+</beans>
