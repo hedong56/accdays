@@ -16,6 +16,10 @@
 
 	<!-- 注意：每一个实现类都要写一套 -->
 	<bean id="userInfoRmiServiceExporter" class="org.springframework.remoting.rmi.RmiServiceExporter">
+		<!-- 找到实现类指定的接口 -->
+		<property name="serviceInterface">
+			<value>com.accdays.rmi.IUserInfoService</value>
+		</property>
 		<!-- 注入实现类 -->
 		<property name="service">
 			<ref bean="userInfoService" /><!-- 实现类bean -->
@@ -23,10 +27,6 @@
 		<!-- rmi客户端访问的标识 -->
 		<property name="serviceName">
 			<value>userInfoRmi</value><!-- 客户端拼接在端口号后面/userInfoRmi -->
-		</property>
-		<!-- 找到实现类指定的接口 -->
-		<property name="serviceInterface">
-			<value>com.accdays.rmi.IUserInfoService</value>
 		</property>
 		<!-- 为客户端指定一个请求的端口 -->
 		<property name="registryPort">
