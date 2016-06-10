@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"  
+    version="2.1">  
+  
+    <!-- TLD版本 -->  
+	<tlib-version>1.0</tlib-version>  
+	<!-- 标签库的名称 -->  
+	<short-name>d</short-name>
+	
+	<!-- ==========自定义JSP标签=================== -->  
+	<tag> 
+    	<!-- 标签名 -->  
+        <name>userBeanStrong</name>  
+  		<!-- 注意此处不能添加java后缀,com.accdays.jspTagAndFunction.UserTag.java -->
+        <tag-class>com.accdays.jspTagAndFunction.UserTagByTagSupport</tag-class>  
+        <!-- 标签体;JSP：接受所有JSP语法，如定制的或内部的tag、scripts、静态HTML、脚本元素、JSP指令和动作 -->
+        <!-- 注意：SimpleTagSupport不支持<body-content>JSP</body-content> -->
+        <body-content>JSP</body-content>  
+        <!-- 添加固定的属性 -->  
+	    <attribute>  
+	        <!-- 设置属性名，子元素的值是字符串内容，这个属性必须在处理类中有get,set方法 -->  
+	        <name>userId</name>  
+	        <!-- 设置该属性是否为必需属性 -->  
+	        <required>true</required>  
+	        <!-- 设置该属性是否支持JSP脚本、表达式等动态内容 -->  
+	        <rtexprvalue>true</rtexprvalue>
+	    </attribute>  
+	    <!-- 添加固定的属性 -->  
+	    <attribute>  
+	        <!-- 设置属性名，子元素的值是字符串内容，这个属性必须在处理类中有get,set方法 -->  
+	        <name>var</name>  
+	        <!-- 设置该属性是否支持JSP脚本、表达式等动态内容 -->  
+	        <rtexprvalue>false</rtexprvalue>
+	    </attribute>  
+    </tag>  
+	
+    <tag> 
+    	<!-- 标签名 -->  
+        <name>userBean</name>  
+  		<!-- 注意此处不能添加java后缀,com.accdays.jspTagAndFunction.UserTag.java -->
+        <tag-class>com.accdays.jspTagAndFunction.UserTag</tag-class>  
+        <!-- 标签体;JSP：接受所有JSP语法，如定制的或内部的tag、scripts、静态HTML、脚本元素、JSP指令和动作 -->
+        <!-- 注意：SimpleTagSupport不支持<body-content>JSP</body-content>,BodyTagSupport支持 -->
+        <body-content>scriptless</body-content>  
+<!--         <body-content>JSP</body-content>   -->
+        <!-- 添加固定的属性 -->  
+	    <attribute>  
+	        <!-- 设置属性名，子元素的值是字符串内容，这个属性必须在处理类中有get,set方法 -->  
+	        <name>userId</name>  
+	        <!-- 设置该属性是否为必需属性 -->  
+	        <required>true</required>  
+	        <!-- 设置该属性是否支持JSP脚本、表达式等动态内容 -->  
+	        <rtexprvalue>true</rtexprvalue>
+	    </attribute>  
+	    <!-- 添加固定的属性 -->  
+	    <attribute>  
+	        <!-- 设置属性名，子元素的值是字符串内容，这个属性必须在处理类中有get,set方法 -->  
+	        <name>var</name>  
+	        <!-- 设置该属性是否支持JSP脚本、表达式等动态内容 -->  
+	        <rtexprvalue>false</rtexprvalue>
+	    </attribute>  
+    </tag>  
+    
+    <!-- ==========自定义JSP函数=================== -->
+    <function>
+		<description>将字符中的html标签过滤掉</description>
+		<name>filterHtml</name>
+		<function-class>com.accdays.jspTagAndFunction.SelfJSPFunction</function-class>
+		<function-signature>java.lang.String filterHtml(java.lang.String)</function-signature>
+		<example>
+      		${d:filterHtml("")}
+  	    </example>
+	</function>
+    <function>
+		<description>数字转大写(1-->一)</description>
+		<name>intToChnNum</name>
+		<function-class>com.accdays.jspTagAndFunction.SelfJSPFunction</function-class>
+		<function-signature>java.lang.String intToChnNum(int)</function-signature>
+		<example>
+      		${d:intToChnNum(1)}
+  	    </example>
+	</function>	
+</taglib> 
