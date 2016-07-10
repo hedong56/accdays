@@ -1,6 +1,7 @@
 package com.accdays.memcached;
 
 import com.accdays.model.User;
+import com.schooner.MemCached.MemcachedItem;
 
 public class MemcachedUtilTest {
 	
@@ -35,13 +36,19 @@ public class MemcachedUtilTest {
         
         User user=(User)cache.get("user");
         System.out.println(user.getId()+","+user.getName());
-        cache.delete("user");
-        User user2=(User)cache.get("user");
-        if(user2!=null){
-        	System.out.println(user2.getId()+","+user2.getName());
-        }else{
-        	System.out.println("user没有被缓存，已经被删除了");
-        }
+        
+        MemcachedItem memcachedItem=cache.gets("user");
+        System.out.println(memcachedItem.casUnique);
+        
+        
+        
+//        cache.delete("user");
+//        User user2=(User)cache.get("user");
+//        if(user2!=null){
+//        	System.out.println(user2.getId()+","+user2.getName());
+//        }else{
+//        	System.out.println("user没有被缓存，已经被删除了");
+//        }
         
 	}
     

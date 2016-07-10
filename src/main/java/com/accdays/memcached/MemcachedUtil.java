@@ -4,6 +4,7 @@ import java.util.Date;
 
 import com.danga.MemCached.MemCachedClient;
 import com.danga.MemCached.SockIOPool;
+import com.schooner.MemCached.MemcachedItem;
 
 public final class MemcachedUtil {
 
@@ -57,7 +58,6 @@ public final class MemcachedUtil {
     
     public boolean add(String key, Object value) {
     	// 不会存入缓存  
-    	mcc.addOrDecr("");
         return mcc.add(key, value);
     }
     
@@ -81,5 +81,13 @@ public final class MemcachedUtil {
     
     public Object get(String key) {  
         return mcc.get(key);  
-    }  
+    } 
+    
+    public MemcachedItem gets(String key) {  
+        return mcc.gets(key);  
+    } 
+    
+    
+    
+    
 }
